@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>A Note</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Pacifico&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div id="background-hearts">
+    <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  </div>
+  <div class="page fade-in">
+
+  <h2>Just a note</h2>
+
+  <!-- Envelope -->
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+    <div class="body"></div>
+  </div>
+
+  <p class="placeholder" id="openText">Click to open</p>
+
+  <!-- FINAL NOTE CARD -->
+  <div class="card note-card hidden" id="noteContent">
+    <div class="note-header">
+      <span class="avatar">💌</span>
+      <strong>Hey Anupriya</strong>
+    </div>
+
+    <hr />
+
+    <p>
+      [This is where you write the actual note.
+      Keep it real. Keep it calm.]
+    </p>
+
+    <p>
+      [Second paragraph if needed.]
+    </p>
+
+    <p class="signature">Always 🤍</p>
+  </div>
+
+  <button class="btn" id="musicBtn">Play music</button>
+  <br><br>
+  <a href="gifts.html" class="btn">Keep going</a>
+
+  <audio id="bgMusic" src="assets/audio/note.mp3"></audio>
+</div>
+
+
+  <script>
+    // Music logic
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+
+    btn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        btn.textContent = "Pause music";
+      } else {
+        music.pause();
+        btn.textContent = "Play music";
+      }
+    });
+
+    // Envelope logic
+    const envelope = document.getElementById("envelope");
+    const openText = document.getElementById("openText");
+    const note = document.getElementById("noteContent");
+
+    envelope.addEventListener("click", () => {
+    if (envelope.classList.contains("open")) return;
+
+    // STEP 1: open flap
+    envelope.classList.add("open");
+    openText.style.display = "none";
+
+    // STEP 2: let flap sit open (important)
+    setTimeout(() => {
+        envelope.classList.add("exit");
+    }, 900);
+
+    // STEP 3: show note after envelope leaves
+    setTimeout(() => {
+        envelope.style.display = "none";
+        note.classList.remove("hidden");
+    }, 1400);
+    });
+
+
+
+  </script>
+
+</body>
+
+</html>

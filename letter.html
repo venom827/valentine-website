@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>One Last Valentine Thought</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Pacifico&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div id="background-hearts">
+    <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  </div>
+  <div class="page fade-in">
+
+    <p class="subtitle soft">the grand finale…</p>
+    <h2>One Last Valentine Thought</h2>
+
+    <!-- Final Letter Card -->
+    <div class="card final-letter">
+
+      <div class="letter-header">
+        <div class="letter-icon">✉️</div>
+        <h3>Final Love Letter</h3>
+      </div>
+
+      <div class="letter-body">
+        <p><strong>Hey [Name],</strong></p>
+
+        <p>
+          [This wasn’t about perfection — just honesty.
+          I wanted you to feel appreciated today.]
+        </p>
+
+        <p>
+          [Whatever comes next, I’m glad this moment exists.]
+        </p>
+
+        <p class="signature">
+          Always
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Final Action -->
+    <button class="btn" id="sealBtn">
+      Seal It 💌
+    </button>
+
+    <p class="subtitle soft hidden" id="endText">
+      This moment is yours now.
+    </p>
+
+  </div>
+
+  <script>
+    const sealBtn = document.getElementById("sealBtn");
+    const endText = document.getElementById("endText");
+
+    sealBtn.addEventListener("click", () => {
+      sealBtn.style.opacity = "0.6";
+      sealBtn.style.pointerEvents = "none";
+      sealBtn.textContent = "Sealed 💗";
+      endText.classList.remove("hidden");
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,706 @@
+/* =========================
+   CSS RESET & BASE
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --bg-main: #FFD0E1;      /* darker soft pink */
+  --text-main: #D4668E;
+  --accent: #CECCFD;
+  --white-soft: #FEF4EA;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* =========================
+   COLOR VARIABLES (LOCKED)
+========================= */
+/* =========================
+   NOTICEABLE FALLING HEARTS
+========================= */
+
+#background-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#background-hearts span {
+  position: absolute;
+  top: -15%;
+  color: rgba(212, 102, 142, 0.7); /* higher contrast */
+  animation-name: heartDrift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08)); /* subtle depth */
+}
+
+/* Content above */
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+/* Individual hearts — BIGGER + VARIED */
+#background-hearts span:nth-child(1)  { left: -5%;  font-size: 1.6rem; animation-duration: 18s; animation-delay: 0s; }
+#background-hearts span:nth-child(2)  { left: 5%;   font-size: 2.2rem; animation-duration: 26s; animation-delay: 4s; }
+#background-hearts span:nth-child(3)  { left: 15%;  font-size: 1.8rem; animation-duration: 22s; animation-delay: 8s; }
+#background-hearts span:nth-child(4)  { left: 25%;  font-size: 2.6rem; animation-duration: 30s; animation-delay: 2s; }
+#background-hearts span:nth-child(5)  { left: 35%;  font-size: 1.5rem; animation-duration: 20s; animation-delay: 6s; }
+#background-hearts span:nth-child(6)  { left: 45%;  font-size: 2.3rem; animation-duration: 28s; animation-delay: 10s; }
+#background-hearts span:nth-child(7)  { left: 55%;  font-size: 1.7rem; animation-duration: 24s; animation-delay: 3s; }
+#background-hearts span:nth-child(8)  { left: 65%;  font-size: 2.8rem; animation-duration: 34s; animation-delay: 7s; }
+#background-hearts span:nth-child(9)  { left: 75%;  font-size: 1.9rem; animation-duration: 26s; animation-delay: 11s; }
+#background-hearts span:nth-child(10) { left: 85%;  font-size: 2.4rem; animation-duration: 32s; animation-delay: 5s; }
+#background-hearts span:nth-child(11) { left: 95%;  font-size: 1.6rem; animation-duration: 21s; animation-delay: 9s; }
+#background-hearts span:nth-child(12) { left: 50%;  font-size: 3rem;  animation-duration: 38s; animation-delay: 0s; }
+
+/* Sakura-like motion */
+@keyframes heartDrift {
+  0% {
+    transform: translateY(-20vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.75;
+  }
+  40% {
+    transform: translateY(40vh) translateX(40px) rotate(140deg);
+  }
+  70% {
+    transform: translateY(80vh) translateX(-40px) rotate(260deg);
+  }
+  100% {
+    transform: translateY(120vh) translateX(60px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+/* =========================
+   GLOBAL LAYOUT
+========================= */
+.page {
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1, h2, h3 {
+  font-family: 'Pacifico', cursive;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 420px;
+  margin-bottom: 1.5rem;
+}
+
+/* Placeholder text styling */
+.placeholder {
+  opacity: 0.85;
+  font-style: italic;
+}
+
+/* =========================
+   CARDS (Notes, Letters, Game Tiles)
+========================= */
+.card {
+  background-color: var(--white-soft);
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+  max-width: 420px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  display: inline-block;
+  background-color: var(--text-main);
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   FADE-IN ANIMATION
+========================= */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE FRIENDLY
+========================= */
+@media (min-width: 768px) {
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+/* =========================
+   GAME LAYOUT
+========================= */
+
+.game-wrapper {
+  padding: 2rem;
+  border-radius: 26px;
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* Stats (Moves / Matched) */
+.stats {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.stat-box {
+  background: #FFE3EC;
+  padding: 1rem 1.6rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  min-width: 110px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* =========================
+   GAME GRID
+========================= */
+
+#gameBoard {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+  justify-items: center;
+}
+
+@media (max-width: 768px) {
+  #gameBoard {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   MEMORY CARD FLIP
+========================= */
+
+.game-card {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  perspective: 900px;
+}
+
+.card-inner {
+  width: 90px;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+/* Flip */
+.game-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back */
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9rem;
+  backface-visibility: hidden;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* Emoji side */
+.card-front {
+  background: #FFE3EC;
+  transform: rotateY(180deg);
+}
+
+/* Question side */
+.card-back {
+  background: #FF8FB8;
+  color: white;
+  font-size: 1.6rem;
+}
+
+/* Matched cards (optional subtle fade) */
+.game-card.flipped {
+  cursor: default;
+}
+
+
+/* =========================
+   ENVELOPE (INTRO ONLY)
+========================= */
+
+.envelope {
+  position: relative;
+  width: 300px;
+  height: 190px;
+  margin: 2rem auto 1rem;
+  cursor: pointer;
+  perspective: 1200px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Envelope body */
+.envelope .body {
+  width: 100%;
+  height: 100%;
+  background-color: #F6A9C4; /* darker pink envelope */
+  border-radius: 18px;
+  border: 2px solid rgba(212, 102, 142, 0.45);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Flap (triangle) */
+.envelope .flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #F39ABF;
+  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  transform-origin: top center;
+  transition: transform 0.6s ease;
+  z-index: 3;
+
+  /* subtle edge definition */
+  border-top: 2px solid rgba(212, 102, 142, 0.55);
+}
+
+/* =========================
+   STAGE 1 — FLAP OPENS UP
+========================= */
+
+.envelope.open .flap {
+  transform: rotateX(160deg); /* stays visible ABOVE */
+}
+
+/* =========================
+   STAGE 2 — ENVELOPE EXITS
+========================= */
+
+.envelope.exit {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* =========================
+   FINAL NOTE CARD
+========================= */
+
+.note-card {
+  max-width: 820px;
+  width: 100%;
+  animation: noteEnter 0.7s ease forwards;
+}
+
+@keyframes noteEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   NOTE DETAILS
+========================= */
+
+.note-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.note-header .avatar {
+  background: #FFB8D0;
+  padding: 0.4rem 0.6rem;
+  border-radius: 50%;
+}
+
+.signature {
+  margin-top: 2rem;
+  text-align: right;
+  font-family: 'Pacifico', cursive;
+  color: var(--text-main);
+}
+
+/* Utility */
+.hidden {
+  display: none;
+}
+
+
+/* =========================
+   GIFTS PAGE
+========================= */
+
+.subtitle {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle.soft {
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* Gift feed container */
+.gift-feed {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  margin: 2rem 0 3rem;
+}
+
+/* Individual gift card */
+.gift-card {
+  background-color: var(--white-soft);
+  border-radius: 18px;
+  padding: 0.8rem;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* Polaroid-style tilt */
+.tilt-left {
+  transform: rotate(-2deg);
+}
+
+.tilt-right {
+  transform: rotate(2deg);
+}
+
+/* Image inside card */
+.gift-card img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 0.6rem;
+  object-fit: cover;
+}
+
+/* Caption */
+.gift-card p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Mobile polish */
+@media (min-width: 768px) {
+  .gift-feed {
+    max-width: 500px;
+  }
+}
+
+
+/* =========================
+   LIKES PAGE (CONSISTENT)
+========================= */
+
+.likes-list {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin: 2rem 0 3rem;
+}
+
+.like-card {
+  background-color: var(--white-soft); /* same as other cards */
+  border-radius: 18px;
+  padding: 1.4rem 1.2rem;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+
+  /* subtle definition */
+  border: 1.5px solid rgba(212, 102, 142, 0.25);
+}
+
+.like-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.like-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.like-card p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Desktop breathing room */
+@media (min-width: 768px) {
+  .likes-list {
+    max-width: 500px;
+  }
+}
+
+
+/* =========================
+   FINAL LETTER
+========================= */
+
+.final-letter {
+  max-width: 520px;
+  width: 100%;
+}
+
+.letter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.letter-icon {
+  background-color: #FFB8D0;
+  padding: 0.5rem 0.6rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+.letter-body p {
+  margin-bottom: 1rem;
+}
+
+.signature {
+  margin-top: 1.8rem;
+  text-align: right;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+/* End message */
+#endText {
+  margin-top: 1.2rem;
+  opacity: 0.85;
+}
+
+
+/* =========================
+   HEART BURST BACKGROUND (FINAL)
+========================= */
+
+#background-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Hearts spawned by JS */
+.heart {
+  position: absolute;
+  top: -6%;
+  color: rgba(212, 102, 142, 0.9);
+  animation: heartFall linear forwards;
+}
+
+/* Keep page content above */
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+/* Simple, natural gravity fall */
+@keyframes heartFall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+}
+
+/* =========================
+   LOADER PAGE
+========================= */
+
+.loader-page {
+  min-height: 100vh;
+  background: #FFD6E5; /* darker pink than before */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  text-align: center;
+}
+
+/* CHARACTER IMAGE */
+.loader-char {
+  width: 250px;        /* CONTROL SIZE HERE */
+  max-width: 80vw;     /* responsive on small screens */
+  height: auto;
+  animation: bounce 1.2s ease-in-out infinite;
+}
+
+/* Cute running / hopping feel */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Text */
+.loader-text {
+  font-family: 'Pacifico', cursive;
+  color: #D4668E;
+  font-size: 1.1rem;
+}
+
+/* Progress bar */
+.loader-bar {
+  width: 220px;
+  height: 10px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.loader-progress {
+  height: 100%;
+  width: 0%;
+  background: #FF6F9F;
+  border-radius: 999px;
+  transition: width 0.2s linear;
+}
+
+/* =========================
+   HANDWRITTEN NOTE TEXT
+========================= */
+
+.note-card,
+.letter,
+.letter-body {
+  background: linear-gradient(
+    to bottom,
+    #FFF1F6,
+    #FFE6EE
+  );
+}
+
+.note-card p,
+.letter p,
+.letter-body p {
+  font-family: 'Handlee', cursive;
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: #3f3a3d; /* soft ink, not black */
+  letter-spacing: 0.3px;
+  margin-bottom: 1.2rem;
+}
+
+/* Slight indent like real letters */
+.note-card p:first-child,
+.letter p:first-child {
+  text-indent: 0.6rem;
+}
+
+/* Subtle paper depth */
+.note-card,
+.letter {
+  box-shadow:
+    inset 0 0 40px rgba(255, 182, 208, 0.25),
+    0 14px 30px rgba(0,0,0,0.12);
+}
+.signature {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.2rem;
+  color: #D4668E;
+  text-align: right;
+  margin-top: 2rem;
+}
