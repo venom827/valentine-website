@@ -1,35 +1,52 @@
 const container = document.getElementById("background-hearts");
 
-function spawnBurst() {
-  const count = 12; // clean & noticeable
+/* -------------------------
+   CREATE ONE HEART
+------------------------- */
+function createHeart(startInside = false) {
+  const heart = document.createElement("span");
+  heart.className = "heart";
+  heart.textContent = "❤";
 
-  for (let i = 0; i < count; i++) {
-    const heart = document.createElement("span");
-    heart.className = "heart";
-    heart.textContent = "❤";
+  // Horizontal position
+  heart.style.left = Math.random() * 100 + "vw";
 
-    // Random horizontal position
-    heart.style.left = Math.random() * 100 + "vw";
+  // Size
+  const size = 18 + Math.random() * 20;
+  heart.style.fontSize = size + "px";
 
-    // Size variation
-    const size = 18 + Math.random() * 14;
-    heart.style.fontSize = size + "px";
+  // Speed (noticeable)
+  const duration = 6 + Math.random() * 4;
+  heart.style.animationDuration = duration + "s";
 
-    // Slow, calm fall
-    const duration = 11 + Math.random() * 4;
-    heart.style.animationDuration = duration + "s";
+  // THIS is the key 👇
+  if (startInside) {
+    // Already falling on screen
+    heart.style.top = Math.random() * 100 + "vh";
 
-    container.appendChild(heart);
-
-    // Cleanup
-    setTimeout(() => {
-      heart.remove();
-    }, duration * 1000);
+    // Start animation mid-way so it is MOVING immediately
+    heart.style.animationDelay = `-${Math.random() * duration}s`;
   }
+
+  container.appendChild(heart);
+
+  // Cleanup
+  setTimeout(() => heart.remove(), duration * 1000);
 }
 
-// Immediate burst on page load
-spawnBurst();
+/* -------------------------
+   INSTANT FIRST FRAME
+------------------------- */
+// Big burst IMMEDIATELY
+for (let i = 0; i < 30; i++) {
+  createHeart(true);
+}
 
-// Repeat every ~5.5 seconds
-setInterval(spawnBurst, 5500);
+/* -------------------------
+   CONTINUOUS FALL
+------------------------- */
+setInterval(() => {
+  for (let i = 0; i < 10; i++) {
+    createHeart(false);
+  }
+}, 500);

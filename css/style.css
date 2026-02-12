@@ -704,3 +704,105 @@ p {
   text-align: right;
   margin-top: 2rem;
 }
+/* =========================
+   INTRO SEQUENCE
+========================= */
+
+.intro-screen {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at top, #ffe0ea, #ffd0e1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* HELLO TEXT */
+.hello-text {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  color: #f74672;
+  animation: helloIn 3s ease forwards;
+  position: absolute;
+}
+
+/* ENTER */
+@keyframes helloIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* EXIT */
+.hello-exit {
+  animation: helloOut 0.8s ease forwards;
+}
+
+@keyframes helloOut {
+  to {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+/* =========================
+   FULL SCREEN START BUTTON
+========================= */
+
+.start-screen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #e45a87,
+    #d94b7a
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+
+.start-screen span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  color: white;
+  letter-spacing: 1px;
+  padding: 2rem 3rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.15);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+/* Reveal animation */
+.start-show {
+  animation: startReveal 0.8s ease forwards;
+}
+
+@keyframes startReveal {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility */
+.hidden {
+  display: none;
+}
+
