@@ -5,3 +5,13 @@ if (!sessionStorage.getItem("fromLoader")) {
   // Clear flag so next refresh shows loader again
   sessionStorage.removeItem("fromLoader");
 }
+const music = document.getElementById("bgMusic");
+const startBtn = document.getElementById("startBtn");
+
+startBtn.addEventListener("click", () => {
+  // mark that music has started
+  sessionStorage.setItem("musicStarted", "true");
+
+  // play music
+  music.play().catch(() => {});
+});
