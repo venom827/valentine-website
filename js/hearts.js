@@ -1,8 +1,5 @@
 const container = document.getElementById("background-hearts");
 
-/* -------------------------
-   CREATE ONE HEART
-------------------------- */
 function createHeart(startInside = false) {
   const heart = document.createElement("span");
   heart.className = "heart";
@@ -12,41 +9,39 @@ function createHeart(startInside = false) {
   heart.style.left = Math.random() * 100 + "vw";
 
   // Size
-  const size = 18 + Math.random() * 20;
+  const size = 14 + Math.random() * 18;
   heart.style.fontSize = size + "px";
 
-  // Speed (noticeable)
-  const duration = 6 + Math.random() * 4;
+  // Fast fall
+  const duration = 4 + Math.random() * 3; // 4–7s
   heart.style.animationDuration = duration + "s";
 
-  // THIS is the key 👇
   if (startInside) {
-    // Already falling on screen
     heart.style.top = Math.random() * 100 + "vh";
-
-    // Start animation mid-way so it is MOVING immediately
     heart.style.animationDelay = `-${Math.random() * duration}s`;
+  } else {
+    heart.style.top = "-12vh";
+    heart.style.animationDelay = "0s";
   }
 
   container.appendChild(heart);
 
-  // Cleanup
-  setTimeout(() => heart.remove(), duration * 1000);
+  setTimeout(() => heart.remove(), (duration + 0.5) * 1000);
 }
 
 /* -------------------------
-   INSTANT FIRST FRAME
+   FORCE IMMEDIATE PAINT
 ------------------------- */
-// Big burst IMMEDIATELY
-for (let i = 0; i < 30; i++) {
-  createHeart(true);
-}
+requestAnimationFrame(() => {
+  for (let i = 0; i < 50; i++) {
+    createHeart(true);
+  }
+});
 
 /* -------------------------
-   CONTINUOUS FALL
+   CONTINUOUS RAIN
 ------------------------- */
 setInterval(() => {
-  for (let i = 0; i < 10; i++) {
-    createHeart(false);
-  }
-}, 500);
+  createHeart(false);
+  createHeart(false);
+}, 100); // dense but smooth
