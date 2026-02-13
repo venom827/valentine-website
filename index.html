@@ -10,22 +10,27 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <audio id="bgMusic" src="assets/audio/bg.mp3" loop></audio>
 
   <!-- Background hearts -->
   <div id="background-hearts"></div>
 
-  <div class="intro-screen">
+  <div class="page fade-in">
+    <div class="card">
+      <h1>Hey Kanmani💕</h1>
 
-    <!-- HELLO -->
-    <h1 class="hello-text" id="helloText">
-      Hello Neha
-    </h1>
+      <p class="placeholder">
+        [This is the intro page.  
+        Write a short line setting the mood.  
+        Something calm and warm.]
+      </p>
+    </div>
 
-    <!-- FULL SCREEN BUTTON -->
-    <a href="note.html" class="start-screen hidden" id="startScreen">
-      <span>START THIS MOMENT</span>
-    </a>
+    <a href="note.html" class="btn" id="startBtn">
+  <span>Start this moment</span>
+</a>
 
+<audio id="bgMusic" src="assets/audio/bg.mp3" loop></audio>
   </div>
 
   <script src="js/index.js"></script>

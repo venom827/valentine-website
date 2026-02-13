@@ -15,6 +15,8 @@
 
 </head>
 <body>
+  <audio id="bgMusic" src="assets/audio/bg.mp3" loop></audio>
+
   <div id="background-hearts">
     <span>❤</span>
   <span>❤</span>
@@ -45,7 +47,7 @@
   <div class="card note-card hidden" id="noteContent">
     <div class="note-header">
       <span class="avatar">💌</span>
-      <strong>Hey Anupriya</strong>
+      <strong>Hey </strong>
     </div>
 
     <hr />
@@ -62,56 +64,37 @@
     <p class="signature">Always 🤍</p>
   </div>
 
-  <button class="btn" id="musicBtn">Play music</button>
-  <br><br>
   <a href="gifts.html" class="btn">Keep going</a>
 
   <audio id="bgMusic" src="assets/audio/note.mp3"></audio>
 </div>
 
+<script>
+  // Envelope logic
+  const envelope = document.getElementById("envelope");
+  const openText = document.getElementById("openText");
+  const note = document.getElementById("noteContent");
 
-  <script>
-    // Music logic
-    const music = document.getElementById("bgMusic");
-    const btn = document.getElementById("musicBtn");
-
-    btn.addEventListener("click", () => {
-      if (music.paused) {
-        music.play();
-        btn.textContent = "Pause music";
-      } else {
-        music.pause();
-        btn.textContent = "Play music";
-      }
-    });
-
-    // Envelope logic
-    const envelope = document.getElementById("envelope");
-    const openText = document.getElementById("openText");
-    const note = document.getElementById("noteContent");
-
-    envelope.addEventListener("click", () => {
+  envelope.addEventListener("click", () => {
     if (envelope.classList.contains("open")) return;
 
     // STEP 1: open flap
     envelope.classList.add("open");
     openText.style.display = "none";
 
-    // STEP 2: let flap sit open (important)
+    // STEP 2: let flap stay open
     setTimeout(() => {
-        envelope.classList.add("exit");
+      envelope.classList.add("exit");
     }, 900);
 
-    // STEP 3: show note after envelope leaves
+    // STEP 3: show note
     setTimeout(() => {
-        envelope.style.display = "none";
-        note.classList.remove("hidden");
+      envelope.style.display = "none";
+      note.classList.remove("hidden");
     }, 1400);
-    });
+  });
+</script>
 
-
-
-  </script>
 
 </body>
 
