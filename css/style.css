@@ -612,19 +612,15 @@ p {
 /* Simple, natural gravity fall */
 @keyframes heartFall {
   0% {
-    transform: translateY(0);
-    opacity: 0;
+    transform: translateY(-10vh);
+    opacity: 1;        /* ← IMPORTANT */
   }
-
-  5% {
-    opacity: 1;
-  }
-
   100% {
     transform: translateY(120vh);
     opacity: 0;
   }
 }
+
 
 /* =========================
    LOADER PAGE
