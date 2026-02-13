@@ -39,7 +39,7 @@ html, body {
 #background-hearts span {
   position: absolute;
   top: -15%;
-  color: rgba(212, 102, 142, 0.7); /* higher contrast */
+  color: rgba(255, 2, 95, 0.7); /* higher contrast */
   animation-name: heartDrift;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -140,7 +140,11 @@ p {
 ========================= */
 .btn {
   display: inline-block;
-  background-color: var(--text-main);
+  background: linear-gradient(
+    135deg,
+    #ff6f9f,
+    #ff4f88
+  );
   color: white;
   padding: 0.8rem 1.6rem;
   border-radius: 999px;
@@ -148,8 +152,28 @@ p {
   font-size: 1rem;
   font-weight: 500;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+
+  box-shadow:
+    0 10px 22px rgba(255, 79, 136, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
+
+/* Hover (desktop polish) */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 28px rgba(255, 79, 136, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+/* Active (mobile tap feel) */
+.btn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 6px 14px rgba(255, 79, 136, 0.35),
+    inset 0 2px 6px rgba(0,0,0,0.15);
+}
+
 
 .btn:hover {
   transform: translateY(-2px);
